@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - MUST SCI4O</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Hero Animations --- */
+        /* Slow Zoom Background */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .hero-bg-animate {
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        /* Text Entrance */
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate-1 { animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.2s; }
+        .hero-animate-2 { animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.4s; }
+        .hero-animate-3 { animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.6s; }
+        .hero-animate-4 { animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.8s; }
+
+        /* Floating Icon Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-icon { animation: float 3s ease-in-out infinite; }
+
+        /* --- General Transitions --- */
+        .project-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        /* Filter Button Active State */
+        .filter-btn.active { background-color: black; color: white; border-color: black; }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50 text-black flex flex-col min-h-screen">
+
+    <!-- Header (Consistent with Home) -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center gap-2">
+                <span>MUST SCI4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <a href="#submit" class="block py-3 px-6 text-red-600 font-semibold">Submit Idea</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                 <a href="#submit" class="bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition">Submit Idea</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-black focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <a href="#submit" class="block py-3 px-6 text-red-600 font-semibold">Submit Idea</a>
+        </div>
+    </header>
+
+    <!-- Animated Hero Section -->
+    <section class="relative h-[500px] flex items-center justify-center overflow-hidden bg-black">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 z-0 hero-bg-animate">
+            <img src="view-kids-learning-laboratory-science-day.jpg" 
+                 alt="Project Workshop" 
+                 class="w-full h-full object-cover opacity-60">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 container mx-auto px-6 text-center">
+            <div class="hero-animate-1 flex justify-center mb-4">
+                <div class="float-icon bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20">
+                    <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+            </div>
+            <h1 class="hero-animate-2 text-5xl md:text-6xl font-extrabold text-white mb-6">
+                From Concept to <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Prototype</span>
+            </h1>
+            <p class="hero-animate-3 text-gray-300 text-xl max-w-2xl mx-auto mb-10 font-light">
+                Explore the groundbreaking work done by our student members. From robotics to sustainable biology, see what we are building.
+            </p>
+            <div class="hero-animate-4">
+                <a href="#gallery" class="inline-flex items-center text-white border border-white/30 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full transition backdrop-blur-sm">
+                    <span>Explore Gallery</span>
+                    <svg class="w-4 h-4 ml-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section id="gallery" class="py-12 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <h2 class="text-2xl font-bold text-black">Project Gallery</h2>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2 justify-center" id="filters">
+                    <button class="filter-btn active px-4 py-2 rounded-full border border-gray-200 text-sm font-medium transition hover:border-black" data-filter="all">All Projects</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 text-sm font-medium transition hover:border-black hover:text-black" data-filter="biotech">Biotech</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 text-sm font-medium transition hover:border-black hover:text-black" data-filter="engineering">Engineering</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 text-sm font-medium transition hover:border-black hover:text-black" data-filter="software">AI & Software</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 text-sm font-medium transition hover:border-black hover:text-black" data-filter="environment">Environment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Grid -->
+    <section class="py-16 bg-gray-50 min-h-screen">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                
+                <!-- Project 1 (Biotech) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="biotech">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full z-10 border border-green-200">Active - Recruiting</span>
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Bio Project">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">Algae Carbon Filter</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Biotech</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Developing a modular bio-reactive panel that uses microalgae to scrub CO2 from indoor classroom air. We are currently testing growth rates of Spirulina strains.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Alex+M&background=random" alt="Lead">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Jo+K&background=random" alt="Member">
+                            </div>
+                            <span class="text-xs text-gray-500">+3 members</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Progress</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Engineering) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="engineering">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-full z-10 border border-gray-600">Prototype Phase</span>
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Robotics">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">Auto-Sorting Recycle Bin</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Engineering</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            A smart bin utilizing computer vision and mechanical servos to automatically sort waste into plastic, paper, and general trash categories upon insertion.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                             <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Sam+T&background=random" alt="Lead">
+                            </div>
+                            <span class="text-xs text-gray-500">Lead Engineering</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Progress</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 (Software) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="software">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full z-10 border border-red-200">Help Wanted</span>
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Code">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">ChemTutor AI</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Software</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            An LLM-based chatbot fine-tuned specifically on the University's Chemistry curriculum to help freshmen solve stoichiometry problems step-by-step.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Dev+L&background=random" alt="Lead">
+                            </div>
+                            <span class="text-xs text-gray-500">Looking for Backend Dev</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Progress</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Environment) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="environment">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full z-10 border border-green-200">Completed</span>
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Garden">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">Urban Roof Garden</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Environment</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Successfully installed a hydroponic system on the Student Union roof. Now produces 10kg of fresh basil and mint weekly for the cafeteria.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                             <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Team+G&background=random" alt="Team">
+                            </div>
+                            <span class="text-xs text-gray-500">Full Team</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Report</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 (Engineering) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="engineering">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-full z-10 border border-gray-600">Design Phase</span>
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Drone">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">Solar Surveillance Drone</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Engineering</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Designing a lightweight fixed-wing drone with flexible solar panels on wings to extend flight time for campus security monitoring.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                             <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Mike+R&background=random" alt="Lead">
+                            </div>
+                            <span class="text-xs text-gray-500">Needs CAD Designer</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Progress</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 (Biotech) -->
+                <div class="project-card bg-white rounded-xl overflow-hidden border border-gray-200 group fade-in-section" data-category="biotech">
+                    <div class="h-48 overflow-hidden relative">
+                        <span class="absolute top-4 left-4 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full z-10 border border-green-200">Active</span>
+                        <img src="https://images.unsplash.com/photo-1579165466741-7f35a4755657?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-500" alt="Microscope">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-black">Bioluminescent Plants</h3>
+                            <span class="text-gray-400 text-xs border border-gray-200 px-2 py-1 rounded">Biotech</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Genetic engineering project attempting to introduce fungal bioluminescence genes into common house plants to create sustainable night lights.
+                        </p>
+                        <div class="flex items-center gap-3 mb-6">
+                             <div class="flex -space-x-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-white bg-gray-200" src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="Lead">
+                            </div>
+                            <span class="text-xs text-gray-500">Research Phase</span>
+                        </div>
+                        <a href="#" class="block w-full text-center bg-gray-50 border border-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-black hover:text-white transition">View Progress</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Empty State (Hidden by default) -->
+            <div id="no-projects" class="hidden text-center py-20">
+                <p class="text-gray-500 text-lg">No projects found in this category.</p>
+                <button onclick="document.querySelector('[data-filter=all]').click()" class="mt-4 text-red-600 font-semibold hover:underline">Clear Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submission Call to Action -->
+    <section id="submit" class="bg-black text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2">
+                    <span class="text-green-400 font-bold uppercase tracking-wider text-sm mb-2 block">Got an Idea?</span>
+                    <h2 class="text-4xl font-bold mb-4">We Fund Student Innovation.</h2>
+                    <p class="text-gray-400 mb-6">
+                        Every semester, the Innovation Club awards micro-grants to 3 promising student projects. We provide the lab space, the equipment, and up to $500 in materials.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300"><span class="text-green-500 mr-3">✓</span> Access to 3D Printers & CNC</li>
+                        <li class="flex items-center text-gray-300"><span class="text-green-500 mr-3">✓</span> Faculty Mentorship</li>
+                        <li class="flex items-center text-gray-300"><span class="text-green-500 mr-3">✓</span> Showcase at Annual Science Fair</li>
+                    </ul>
+                    <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg shadow-red-900/30">
+                        Submit Project Proposal
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Students planning" class="rounded-lg opacity-80 border border-gray-800">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Home) -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-6 py-12">
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                 <div class="col-span-2 md:col-span-1">
+                    <a href="#" class="text-xl font-bold">
+                        MUST Sci4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span>
+                    </a>
+                    <p class="text-gray-500 mt-4 text-sm">University Student Organization.<br>&copy; 2025.</p>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">The Club</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="index.html#about" class="hover:text-black">Our Mission</a></li>
+                         <li><a href="index.html#features" class="hover:text-black">What We Do</a></li>
+                         <li><a href="stories.html" class="hover:text-black">Success Stories</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Members</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="index.html#internships" class="hover:text-black">Internship Portal</a></li>
+                         <li><a href="#submit" class="hover:text-black">Submit Project Idea</a></li>
+                         <li><a href="index.html#faq" class="hover:text-black">FAQ</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Connect</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="#" class="hover:text-black">Instagram</a></li>
+                         <li><a href="#" class="hover:text-black">Discord Server</a></li>
+                         <li><a href="#" class="hover:text-black">Contact Exec Board</a></li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations & Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if(menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // --- Scroll Animations (Intersection Observer) ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- Project Filtering Logic ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const noProjectsMsg = document.getElementById('no-projects');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active', 'bg-black', 'text-white', 'border-black'));
+                    filterBtns.forEach(b => b.classList.add('text-gray-600'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
+                    btn.classList.remove('text-gray-600');
+
+                    const filterValue = btn.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || filterValue === category) {
+                            card.classList.remove('hidden');
+                            // Trigger animation again for effect
+                            card.classList.remove('is-visible');
+                            setTimeout(() => card.classList.add('is-visible'), 50);
+                            visibleCount++;
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    // Show "No projects" message if needed
+                    if (visibleCount === 0) {
+                        noProjectsMsg.classList.remove('hidden');
+                    } else {
+                        noProjectsMsg.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - MUST SCI4O</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-serif { font-family: 'Merriweather', serif; }
+
+        /* --- Animations --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Marquee Animation for Company Logos */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        
+        /* Profile Image Hover Effect */
+        .profile-img-container { overflow: hidden; }
+        .profile-img-container img { transition: transform 0.5s ease; }
+        .story-card:hover .profile-img-container img { transform: scale(1.05); }
+
+        /* Quote Decoration */
+        .quote-mark {
+            font-family: 'Merriweather', serif;
+            font-size: 6rem;
+            line-height: 1;
+            opacity: 0.1;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-black flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center gap-2">
+                <span>MUST SCI4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold ">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <div class="hidden md:flex items-center space-x-4">
+                 <a href="index.html#join" class="bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition">Join Now</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-black focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+             <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <a href="#submit" class="block py-3 px-6 text-red-600 font-semibold">Submit Idea</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-50 py-20 lg:py-28 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <span class="text-red-600 font-bold tracking-wider uppercase text-sm mb-4 block">Alumni Spotlight</span>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-black mb-6 leading-tight">
+                    Proof that <br>Curiosity Pays Off.
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    Our members don't just graduate with a degree. They graduate with a portfolio, a network, and a career. Meet the people who built their future in our lab.
+                </p>
+            </div>
+        </div>
+        <!-- Decorative Background Element -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-50 z-0"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-red-100 rounded-full blur-3xl opacity-50 z-0"></div>
+    </section>
+
+    
+    <section class="border-y border-gray-200 bg-white py-8">
+        <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Our Alumni Innovate At</p>
+        <div class="marquee-container">
+            <div class="marquee-content flex gap-16 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <span class="text-2xl font-bold font-serif">MLW</span>
+                <span class="text-2xl font-bold font-sans tracking-tighter">MTL</span>
+                <span class="text-2xl font-bold font-mono">MUST</span>
+                <span class="text-2xl font-bold italic">MUBAS</span>
+                <span class="text-2xl font-bold font-sans">MASM</span>
+                <span class="text-2xl font-bold font-serif text-blue-800">Solidity designs</span>
+                <span class="text-2xl font-bold font-mono text-green-700">NVIDIA</span>
+                <span class="text-2xl font-bold font-sans tracking-wide">TESLA</span>
+                <!-- Duplicate for loop -->
+                <span class="text-2xl font-bold font-serif">Google</span>
+                <span class="text-2xl font-bold font-sans tracking-tighter">pfizer</span>
+                <span class="text-2xl font-bold font-mono">SpaceX</span>
+                <span class="text-2xl font-bold italic">Genentech</span>
+                <span class="text-2xl font-bold font-sans">Microsoft</span>
+                <span class="text-2xl font-bold font-serif text-blue-800">MayoClinic</span>
+                <span class="text-2xl font-bold font-mono text-green-700">NVIDIA</span>
+                <span class="text-2xl font-bold font-sans tracking-wide">TESLA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Story (Deep Dive) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 fade-in-section">
+                <!-- Image Side -->
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-black rounded-lg z-0"></div>
+                    <div class="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Sarah Jenkins" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute bottom-6 right-6 bg-white p-4 shadow-lg rounded-lg z-20 max-w-xs">
+                        <p class="text-xs text-gray-500 uppercase font-bold">Current Role</p>
+                        <p class="font-bold text-black">Data Scientist @ BioGen</p>
+                    </div>
+                </div>
+                
+                <!-- Text Side -->
+                <div class="lg:w-1/2">
+                    <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full">Class of 2023</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-6">From Club Hackathon to Full-Time Offer.</h2>
+                    <blockquote class="text-xl font-serif text-gray-700 italic mb-6 border-l-4 border-red-600 pl-4">
+                        "I didn't have any experience on my resume. I joined the Innovation Club, built a water-quality sensor for a semester project, and used that exact project to pass my technical interview."
+                    </blockquote>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Sarah joined the club as a sophomore majoring in Biology. Feeling disconnected from the tech side of science, she joined a club team building IoT devices. 
+                        <br><br>
+                        Through the club's <strong>Direct Internship Pathway</strong>, her resume was flagged to recruiters at BioGen, leading to a summer internship and eventually a full-time role.
+                    </p>
+                    <a href="projects.html" class="text-black font-semibold border-b-2 border-black hover:text-red-600 hover:border-red-600 transition pb-1">See the project she built &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Journey Timeline (Replaced Emojis with SVGs) -->
+    <section class="py-20 bg-black text-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold">How We Build Leaders</h2>
+                <p class="text-gray-400 mt-2">The typical path of a club member.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-800 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-900 border-2 border-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                        <!-- Icon: User Group -->
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Join & Explore</h3>
+                    <p class="text-sm text-gray-400">Attend general meetings, meet mentors, and find a team that interests you.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-900 border-2 border-gray-700 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon: Wrench/Build -->
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Build</h3>
+                    <p class="text-sm text-gray-400">Spend the semester building a project. Fail fast, learn hard skills, and prototype.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-900 border-2 border-gray-700 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon: Presentation/Chart -->
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Showcase</h3>
+                    <p class="text-sm text-gray-400">Present at the Science Fair. Add the project to your resume and portfolio.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 text-center">
+                    <div class="w-24 h-24 mx-auto bg-gray-900 border-2 border-red-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                        <!-- Icon: Briefcase -->
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Intern</h3>
+                    <p class="text-sm text-gray-400">Use club connections to land an internship. 85% of our project leads get placed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Story Grid -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">More Success Stories</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "The Hackathon weekend changed my career trajectory. I met the CTO of a startup there, pitched my idea, and was hired the next month."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=Marcus+C&background=random" alt="Marcus">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">Marcus Chen</h4>
+                            <p class="text-xs text-gray-500">Junior Engineer @ Tesla</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "I was a pure chemistry major with zero coding skills. The club workshops taught me Python, which I now use daily in genomic research."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=Elena+R&background=random" alt="Elena">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">Elena Rodriguez</h4>
+                            <p class="text-xs text-gray-500">Research Fellow @ NIH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "The funding we got for our drone project allowed us to file for a patent. The club didn't just teach me science, it taught me business."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=David+K&background=random" alt="David">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">David Kim</h4>
+                            <p class="text-xs text-gray-500">Founder @ SkyMonitor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 (New) -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "I used the club's 3D printers to prototype a prosthetic hand part. That physical model helped me get into my top-choice Medical School."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=Ahmed+F&background=random" alt="Ahmed">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">Ahmed F.</h4>
+                            <p class="text-xs text-gray-500">Med Student @ Hopkins</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (New) -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "I pivoted from physics to data science because of a club project analyzing star cluster data. I realized I loved the code more than the telescope."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=Chris+T&background=random" alt="Chris">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">Chris Tran</h4>
+                            <p class="text-xs text-gray-500">Analyst @ Goldman Sachs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 (New) -->
+                <div class="story-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in-section flex flex-col h-full">
+                    <div class="quote-mark text-black">“</div>
+                    <div class="relative z-10 flex-grow">
+                        <p class="text-gray-600 mb-6 italic">
+                            "The club paid for my poster printing at the National Science Conference. That exposure was invaluable for my academic career."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="profile-img-container w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://ui-avatars.com/api/?name=Jessica+L&background=random" alt="Jessica">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black text-sm">Jessica Lee</h4>
+                            <p class="text-xs text-gray-500">PhD Candidate @ MIT</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Placements List -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h3 class="text-2xl font-bold mb-8 text-center">Recent 2024 Placements</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-black text-sm uppercase tracking-wider">
+                            <th class="py-4 font-bold">Student Major</th>
+                            <th class="py-4 font-bold">Placement Type</th>
+                            <th class="py-4 font-bold text-right">Organization</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm">
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="py-4">Computer Science</td>
+                            <td class="py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">Internship</span></td>
+                            <td class="py-4 text-right font-semibold text-black">Microsoft</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="py-4">Bio-Engineering</td>
+                            <td class="py-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Research</span></td>
+                            <td class="py-4 text-right font-semibold text-black">Mayo Clinic</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="py-4">Mechanical Eng.</td>
+                            <td class="py-4"><span class="bg-black text-white px-2 py-1 rounded text-xs font-bold">Full Time</span></td>
+                            <td class="py-4 text-right font-semibold text-black">Ford Motor Co.</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="py-4">Physics</td>
+                            <td class="py-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">PhD Program</span></td>
+                            <td class="py-4 text-right font-semibold text-black">CalTech</td>
+                        </tr>
+                         <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                            <td class="py-4">Chemistry</td>
+                            <td class="py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">Internship</span></td>
+                            <td class="py-4 text-right font-semibold text-black">Dow Chemical</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Area -->
+    <section class="py-20 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <h2 class="text-3xl font-bold mb-6">Write Your Own Story</h2>
+            <p class="text-gray-600 mb-8">
+                The next great project, startup, or breakthrough could be yours. You just have to show up.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="index.html#join" class="bg-black text-white font-semibold py-3 px-8 rounded-lg hover:bg-gray-800 transition">
+                    Become a Member
+                </a>
+                <a href="projects.html" class="bg-white text-black border border-gray-300 font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition">
+                    Browse Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-6 py-12">
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                 <div class="col-span-2 md:col-span-1">
+                    <a href="#" class="text-xl font-bold">
+                        MUST Sci4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span>
+                    </a>
+                    <p class="text-gray-500 mt-4 text-sm">University Student Organization.<br>&copy; 2025.</p>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">The Club</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="index.html#about" class="hover:text-black">Our Mission</a></li>
+                         <li><a href="index.html#features" class="hover:text-black">What We Do</a></li>
+                         <li><a href="#" class="hover:text-black text-black font-semibold">Success Stories</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Members</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="index.html#internships" class="hover:text-black">Internship Portal</a></li>
+                         <li><a href="projects.html#submit" class="hover:text-black">Submit Project Idea</a></li>
+                         <li><a href="index.html#faq" class="hover:text-black">FAQ</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Connect</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-500">
+                         <li><a href="#" class="hover:text-black">Instagram</a></li>
+                         <li><a href="#" class="hover:text-black">Discord Server</a></li>
+                         <li><a href="#" class="hover:text-black">Contact Exec Board</a></li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            // Scroll Animations
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

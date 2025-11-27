@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base & Custom Styles --- */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .border-accents { border-color: #EAEAEA; }
+        .bg-accents { background-color: #FAFAFA; }
+        
+        /* FAQ Icon Transition */
+        .faq-icon { transition: transform 0.3s ease; }
+        .faq-question.open .faq-icon { transform: rotate(45deg); }
+
+        /* --- Animation Preparation --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .is-visible .stagger-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+        .is-visible .stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+        .is-visible .stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+        .is-visible .stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+        .is-visible .stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-accents">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center gap-2">
+                <span>MUST SCI4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+<div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <div class="hidden md:flex items-center space-x-4">
+                 <a href="#join" class="bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition">Join the Club</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-black focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-accents">
+            <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
+            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
+            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
+            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
+            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
+            <a href="#join" class="block py-3 px-6 text-red-600 font-semibold hover:bg-gray-50">Join Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section (Updated) -->
+    <section id="home" class="relative bg-black min-h-[600px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://img1.wsimg.com/isteam/ip/d67a79b6-be4e-4bfa-a483-a3a9eecac97e/blacksinaijpeg.jpeg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1280" alt="Science Laboratory and Innovation" class="w-full h-full object-cover opacity-90">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/70"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="container relative z-10 mx-auto px-6 py-20 text-center">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white text-sm font-bold mb-6 backdrop-blur-sm">
+                Science For All Club
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                Where Curiosity <br>Meets <span class="text-green-400">Innovation.</span>
+            </h1>
+            <p class="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Don't just study science, build it. Join the club that bridges the gap between classroom theory, real-world innovation, and industry internships.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                 <a href="#projects" class="bg-red-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-red-700 transition w-full sm:w-auto shadow-lg shadow-red-900/20">See Student Projects</a>
+                 <a href="#internships" class="bg-white text-black font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition w-full sm:w-auto">View Internships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Pillars Section -->
+    <section id="features" class="py-24 bg-accents fade-in-section">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold">More Than Just a Club</h2>
+                <p class="text-gray-600 mt-2">We provide the platform, you provide the ideas.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg border border-accents p-8 transition-shadow hover:shadow-xl flex flex-col stagger-animation">
+                    <h3 class="text-2xl font-bold text-black mb-2">Innovation Labs</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Access to mentorship and resources to turn your wild scientific ideas into working prototypes. We host monthly hackathons and idea pitches.</p>
+                </div>
+                 <!-- Card 2 -->
+                <div class="bg-white rounded-lg border border-accents p-8 transition-shadow hover:shadow-xl flex flex-col stagger-animation">
+                    <h3 class="text-2xl font-bold text-black mb-2">Direct Internship Pathways</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Skip the cold emails. Our club partners with leading firms to offer exclusive internship spots specifically for SFA members.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Club Impact Stats -->
+    <section class="py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-6" id="stats-section">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="stagger-animation">
+                    <h3 class="text-5xl font-extrabold text-black" data-target="250">15</h3>
+                    <p class="text-lg text-gray-500 mt-2">Active Members</p>
+                </div>
+                <div class="stagger-animation">
+                    <h3 class="text-5xl font-extrabold text-green-600" data-target="45">4</h3>
+                    <p class="text-lg text-gray-500 mt-2">Projects Built</p>
+                </div>
+                <div class="stagger-animation">
+                    <h3 class="text-5xl font-extrabold text-red-600" data-target="120">5</h3>
+                    <p class="text-lg text-gray-500 mt-2">Internships Placed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Opportunities (Projects & Internships) -->
+    <main id="internships" class="container mx-auto px-6 py-24 border-t border-accents">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <h2 class="text-4xl font-bold">Current Opportunities</h2>
+                <p class="text-gray-600 mt-2">Exclusive internships and active projects recruiting members.</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <span class="text-sm bg-black text-white px-3 py-1 rounded-full">Updated: This Week</span>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Opportunity Card 1: Internship -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-green-500 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-green-600 uppercase tracking-wide">Internship</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">Biotech Research Assistant</h3>
+                <p class="text-gray-600 mb-6 text-sm">Partner: GenTech Labs. Paid summer position focusing on DNA sequencing analysis.</p>
+                <a href="#" class="font-semibold text-black hover:text-green-600 text-sm">Apply via Club Portal &rarr;</a>
+            </div>
+
+            <!-- Opportunity Card 2: Innovation Project -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-red-500 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-red-600 uppercase tracking-wide">Club Project</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">Smart Campus Garden</h3>
+                <p class="text-gray-600 mb-6 text-sm">Student Lead: Alex M. Looking for IoT enthusiasts to build moisture sensors.</p>
+                <a href="#" class="font-semibold text-black hover:text-red-600 text-sm">Join Project Team &rarr;</a>
+            </div>
+
+            <!-- Opportunity Card 3: Internship -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-green-500 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-green-600 uppercase tracking-wide">Internship</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">Data Science Junior</h3>
+                <p class="text-gray-600 mb-6 text-sm">Partner: City Analytics. 3-month rotation for students proficient in Python.</p>
+                <a href="#" class="font-semibold text-black hover:text-green-600 text-sm">Apply via Club Portal &rarr;</a>
+            </div>
+
+            <!-- Opportunity Card 4: Project -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-red-500 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-red-600 uppercase tracking-wide">Club Project</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">AI Tutoring Bot</h3>
+                <p class="text-gray-600 mb-6 text-sm">Student Lead: Sarah J. Developing a chemistry tutor bot. Needs backend dev.</p>
+                <a href="#" class="font-semibold text-black hover:text-red-600 text-sm">Join Project Team &rarr;</a>
+            </div>
+
+            <!-- Opportunity Card 5: Workshop -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-gray-800 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-gray-800 uppercase tracking-wide">Event</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">Innovation Hackathon</h3>
+                <p class="text-gray-600 mb-6 text-sm">48-hour event to solve campus sustainability issues. Prizes included.</p>
+                <a href="#" class="font-semibold text-black hover:text-gray-600 text-sm">Register Team &rarr;</a>
+            </div>
+            
+            <!-- Opportunity Card 6: Internship -->
+            <div class="bg-white rounded-lg border border-l-4 border-accents border-l-green-500 p-8 transition-transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+                <span class="text-xs font-bold text-green-600 uppercase tracking-wide">Internship</span>
+                <h3 class="text-xl font-bold text-black mt-2 mb-2">Renewable Energy Intern</h3>
+                <p class="text-gray-600 mb-6 text-sm">Partner: SolarFlow. Field work opportunity for engineering students.</p>
+                <a href="#" class="font-semibold text-black hover:text-green-600 text-sm">Apply via Club Portal &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="bg-accents py-24">
+        <div class="container mx-auto px-6">
+            <div class="lg:flex lg:items-center lg:gap-20">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold text-black mb-4">By Students, For Innovators</h2>
+                    <p class="text-gray-600 mb-6 text-lg">Science for All isn't just a name. It's our philosophy. We believe innovation shouldn't be limited to Ph.D. labs. Whether you are a freshman with a crazy idea or a senior looking for career placement, this club is your launchpad.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-gray-700"><span class="text-green-600 mr-2">✓</span> Weekly brainstorming sessions</li>
+                        <li class="flex items-center text-gray-700"><span class="text-green-600 mr-2">✓</span> Exclusive industry networking nights</li>
+                        <li class="flex items-center text-gray-700"><span class="text-green-600 mr-2">✓</span> Funding for student prototypes</li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-red-100 rounded-full z-0"></div>
+                    <img src="view-kids-learning-laboratory-science-day.jpg" alt="Students collaborating" class="relative z-10 rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold">Club FAQ</h2>
+                <p class="text-gray-600 mt-2">Everything you need to know about joining.</p>
+            </div>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-accents rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                        <span class="text-lg font-semibold">Do I need to be a Science major to join?</span>
+                        <div class="faq-icon text-black text-2xl font-thin">+</div>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p>Not at all! Innovation requires diverse perspectives. We need designers, coders, writers, and business minds just as much as we need biologists and physicists. "Science for All" means everyone.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-accents rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                        <span class="text-lg font-semibold">How do the internships work?</span>
+                        <div class="faq-icon text-black text-2xl font-thin">+</div>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p>We have agreements with specific partner companies who reserve internship slots for our club members. You apply through our internal portal, and our club leadership provides a recommendation letter to the employer.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-accents rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                        <span class="text-lg font-semibold">Is there a membership fee?</span>
+                        <div class="faq-icon text-black text-2xl font-thin">+</div>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p>Membership is free for all university students. Some specific workshops or hackathons might have a small entry fee to cover food and materials, but general access is open to all.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="join" class="bg-black fade-in-section">
+        <div class="container mx-auto px-6 py-20 text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Ready to Innovate?</h2>
+            <p class="max-w-xl mx-auto mb-8 text-gray-400">Join the mailing list to get invited to our next general meeting and receive the weekly internship drop.</p>
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="student@university.edu" class="w-full px-5 py-3 rounded-lg border-2 border-gray-700 bg-gray-900 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                <button type="submit" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition">Join List</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-accents">
+        <div class="container mx-auto px-6 py-16">
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                 <div class="col-span-2 md:col-span-1">
+                    <a href="#" class="text-xl font-bold">
+                        MUST Sci4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span>
+                    </a>
+                    <p class="text-gray-500 mt-4">University Student Organization.<br>&copy; 2025.</p>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">The Club</h4>
+                     <ul class="mt-4 space-y-3 text-gray-500">
+                         <li><a href="#about" class="hover:text-black">Our Mission</a></li>
+                         <li><a href="#features" class="hover:text-black">What We Do</a></li>
+                         <li><a href="stories.html" class="hover:text-black">Success Stories</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Members</h4>
+                     <ul class="mt-4 space-y-3 text-gray-500">
+                         <li><a href="#internships" class="hover:text-black">Internship Portal</a></li>
+                         <li><a href="#" class="hover:text-black">Submit Project Idea</a></li>
+                         <li><a href="#faq" class="hover:text-black">FAQ</a></li>
+                     </ul>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-black">Connect</h4>
+                     <ul class="mt-4 space-y-3 text-gray-500">
+                         <li><a href="#" class="hover:text-black">Instagram</a></li>
+                         <li><a href="#" class="hover:text-black">Discord Server</a></li>
+                         <li><a href="#" class="hover:text-black">Contact Exec Board</a></li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- Scroll Animations ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        if (entry.target.id === 'stats-section') {
+                            startCounterAnimation();
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- Stats Counter Animation ---
+            function startCounterAnimation() {
+                const counters = document.querySelectorAll('#stats-section [data-target]');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let current = 0;
+                    const increment = target / 100; 
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current).toLocaleString();
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                question.addEventListener('click', () => {
+                    const isOpen = question.classList.contains('open');
+                    faqItems.forEach(i => {
+                        i.querySelector('.faq-question').classList.remove('open');
+                        i.querySelector('.faq-answer').classList.add('hidden');
+                    });
+                    if (!isOpen) {
+                        question.classList.add('open');
+                        answer.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
