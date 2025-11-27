@@ -62,32 +62,47 @@
 
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold flex items-center gap-2">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            
+            <!-- Logo: Adjusted for mobile fit -->
+            <a href="index.html" class="text-sm md:text-2xl font-bold flex items-center gap-2 truncate pr-4">
                 <span>MUST SCI4O <span class="text-red-600">Innovation</span><span class="text-green-600">Club</span></span>
             </a>
+
+            <!-- Desktop Menu Links (Stories is Active) -->
             <div class="hidden md:flex items-center space-x-6">
-            <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
-            <a href="projects.html" class="block py-3 px-6 text-black font-semibold ">Projects</a>
-            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
-            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
-            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
-            <div class="hidden md:flex items-center space-x-4">
-                 <a href="index.html#join" class="bg-black text-white font-semibold px-4 py-2 rounded-md hover:bg-gray-800 transition">Join Now</a>
+                <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black transition">Home</a>
+                <a href="projects.html" class="block py-3 px-6 text-gray-600 hover:text-black transition">Projects</a>
+                <a href="stories.html" class="block py-3 px-6 text-black font-semibold bg-gray-50 rounded-full">Stories</a>
+                <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black transition">Events</a>
+                <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black transition">Resources</a>
             </div>
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-black focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+
+            <!-- STYLED MOBILE BUTTON -->
+            <div class="md:hidden flex-shrink-0">
+                <button id="menu-btn" class="group p-2.5 rounded-lg border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1">
+                    <div class="relative w-6 h-6">
+                        <!-- Hamburger Icon -->
+                        <svg id="icon-open" class="w-6 h-6 text-gray-800 transform transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                        <!-- Close (X) Icon - Hidden by default -->
+                        <svg id="icon-close" class="hidden w-6 h-6 text-red-600 transform transition-transform duration-300 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-             <a href="index.html" class="block py-3 px-6 text-gray-600 hover:text-black">Home</a>
-            <a href="projects.html" class="block py-3 px-6 text-black font-semibold bg-gray-50">Projects</a>
-            <a href="stories.html" class="block py-3 px-6 text-gray-600 hover:text-black">Stories</a>
-            <a href="events.html" class="block py-3 px-6 text-gray-600 hover:text-black">Events</a>
-            <a href="resources.html" class="block py-3 px-6 text-gray-600 hover:text-black">Resources</a>
-            <a href="#submit" class="block py-3 px-6 text-red-600 font-semibold">Submit Idea</a>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full left-0 z-50 shadow-xl">
+            <a href="index.html" class="block py-4 px-6 text-gray-600 hover:bg-gray-50 hover:text-black border-b border-gray-100 transition">Home</a>
+            <a href="projects.html" class="block py-4 px-6 text-gray-600 hover:bg-gray-50 hover:text-black border-b border-gray-100 transition">Projects</a>
+            <a href="stories.html" class="block py-4 px-6 text-black font-semibold bg-gray-50 border-b border-gray-100 transition">Stories</a>
+            <a href="events.html" class="block py-4 px-6 text-gray-600 hover:bg-gray-50 hover:text-black border-b border-gray-100 transition">Events</a>
+            <a href="resources.html" class="block py-4 px-6 text-gray-600 hover:bg-gray-50 hover:text-black border-b border-gray-100 transition">Resources</a>
+            <a href="projects.html#submit" class="block py-4 px-6 text-red-600 font-semibold hover:bg-red-50 transition">Submit Idea</a>
         </div>
     </header>
 
@@ -452,11 +467,33 @@
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu
+            // --- Mobile Menu Toggle & Animation ---
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            
             if(menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                menuBtn.addEventListener('click', () => {
+                    // Toggle the menu visibility
+                    mobileMenu.classList.toggle('hidden');
+                    
+                    // Toggle the Icons
+                    if (mobileMenu.classList.contains('hidden')) {
+                        // Menu is closed: Show Hamburger, Hide X
+                        iconOpen.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                        iconClose.classList.add('rotate-90'); // Reset rotation for next animation
+                    } else {
+                        // Menu is open: Hide Hamburger, Show X
+                        iconOpen.classList.add('hidden');
+                        iconClose.classList.remove('hidden');
+                        // Small timeout to allow the remove('hidden') to register before rotating
+                        setTimeout(() => {
+                           iconClose.classList.remove('rotate-90'); 
+                        }, 10);
+                    }
+                });
             }
 
             // Scroll Animations
